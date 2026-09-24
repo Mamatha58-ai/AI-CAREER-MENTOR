@@ -1,0 +1,307 @@
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
+
+/* Full-page hero with animated gradient background */
+.home {
+  min-height: 100vh;
+}
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient orbs */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero::before {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(99,102,241,0.22) 0%, transparent 70%);
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: drift 8s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%);
+  bottom: 0;
+  right: 10%;
+  animation: drift 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift {
+  from { transform: translateX(-50%) translateY(0); }
+  to   { transform: translateX(-50%) translateY(-30px); }
+}
+
+/* Hero content sits above the orbs */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #f1f5f9 0%, #a5b4fc 50%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #94a3b8;
+  line-height: 1.8;
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Override shared primary/secondary for hero only */
+.hero-buttons .primary-btn,
+.hero-buttons .secondary-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 15px 36px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-buttons .primary-btn {
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  color: white;
+  border: none;
+  box-shadow: 0 6px 22px rgba(99,102,241,0.45);
+}
+
+.hero-buttons .primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(99,102,241,0.6);
+}
+
+.hero-buttons .secondary-btn {
+  background: rgba(255,255,255,0.06);
+  color: #f1f5f9;
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  box-shadow: none;
+}
+
+.hero-buttons .secondary-btn:hover {
+  background: rgba(99,102,241,0.15);
+  border-color: rgba(99,102,241,0.5);
+  transform: translateY(-3px);
+}
+
+/* ---- FEATURES SECTION ---- */
+.features {
+  padding: 80px 48px;
+  position: relative;
+}
+
+.features h2 {
+  text-align: center;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.features > p {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 48px;
+  font-size: 1rem;
+}
+
+.feature-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Feature card — extends .card from index.css */
+.feature-card {
+  background: linear-gradient(145deg, rgba(99,102,241,0.1) 0%, rgba(6,182,212,0.05) 100%);
+  backdrop-filter: blur(10px);
+  padding: 34px 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #06b6d4);
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(99,102,241,0.35);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 30px rgba(99,102,241,0.2);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-card .icon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  color: #94a3b8;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ---- ANALYTICS / STATS SECTION ---- */
+.analytics {
+  padding: 80px 48px;
+  background: linear-gradient(180deg, transparent, rgba(99,102,241,0.05) 50%, transparent);
+}
+
+.analytics h2 {
+  text-align: center;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 50px;
+  background: linear-gradient(135deg, #f1f5f9, #a5b4fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.analytics-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.box {
+  background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+  color: white;
+  padding: 36px 20px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+
+.box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(99,102,241,0.5);
+}
+
+.box h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.box p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .feature-container {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features,
+  .analytics {
+    padding: 60px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .analytics-container {
+    grid-template-columns: 1fr;
+  }
+}

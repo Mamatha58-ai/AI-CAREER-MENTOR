@@ -1,0 +1,415 @@
+/* ============================================================
+   AI CAREER MENTOR — DESIGN SYSTEM
+   Warm-dark theme. Feels built by humans, not a template.
+   ============================================================ */
+
+:root {
+  /* Brand colours */
+  --indigo:       #5b5ef4;
+  --indigo-light: #818cf8;
+  --indigo-dark:  #4338ca;
+  --cyan:         #0ea5e9;
+  --cyan-light:   #7dd3fc;
+  --amber:        #f59e0b;
+  --emerald:      #10b981;
+  --rose:         #f43f5e;
+
+  /* Backgrounds — slightly warm dark, not pure cold black */
+  --bg:           #0d0d14;
+  --bg-2:         #13131f;
+  --bg-3:         #1a1a2a;
+  --bg-card:      rgba(255,255,255,0.04);
+  --bg-card-h:    rgba(255,255,255,0.07);
+
+  /* Text */
+  --text-1:  #eef0f6;
+  --text-2:  #9499b0;
+  --text-3:  #565d78;
+
+  /* Borders */
+  --border:       rgba(255,255,255,0.08);
+  --border-focus: rgba(91,94,244,0.55);
+
+  /* Radii */
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  20px;
+  --r-xl:  28px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md:   0 8px 24px rgba(0,0,0,0.4);
+  --shadow-lg:   0 20px 56px rgba(0,0,0,0.5);
+  --glow-indigo: 0 0 40px rgba(91,94,244,0.22);
+
+  /* Gradients */
+  --grad-brand:  linear-gradient(135deg, #5b5ef4 0%, #0ea5e9 100%);
+  --grad-card:   linear-gradient(145deg, rgba(91,94,244,0.1) 0%, rgba(14,165,233,0.04) 100%);
+  --grad-text:   linear-gradient(135deg, #c7d2fe 0%, #7dd3fc 100%);
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:  0.25s;
+}
+
+/* ── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background ambient glow */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% -10%, rgba(91,94,244,0.12), transparent),
+    radial-gradient(ellipse 50% 30% at 85% 70%, rgba(14,165,233,0.06), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── TYPOGRAPHY HELPERS ─────────────────────────────────────── */
+.gradient-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── SHARED FEATURE PAGE WRAPPER ────────────────────────────── */
+.page-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 52px 28px 80px;
+  min-height: calc(100vh - 66px);
+}
+
+.page-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-1);
+  margin-bottom: 6px;
+}
+
+.page-sub {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ── CARDS ──────────────────────────────────────────────────── */
+.card {
+  background: var(--grad-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(91,94,244,0.3);
+  box-shadow: var(--shadow-md), var(--glow-indigo);
+}
+
+/* ── FORM ELEMENTS ──────────────────────────────────────────── */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.field-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.field-input,
+.field-select,
+.field-textarea {
+  padding: 12px 15px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: 0.93rem;
+  color: var(--text-1);
+  outline: none;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  width: 100%;
+  font-family: inherit;
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder { color: var(--text-3); }
+
+.field-input:focus,
+.field-select:focus,
+.field-textarea:focus {
+  border-color: var(--border-focus);
+  background: rgba(91,94,244,0.07);
+  box-shadow: 0 0 0 3px rgba(91,94,244,0.14);
+}
+
+.field-select option { background: var(--bg-3); color: var(--text-1); }
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--r-full);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+
+.btn-primary {
+  background: var(--grad-brand);
+  color: white;
+  padding: 12px 28px;
+  box-shadow: 0 4px 16px rgba(91,94,244,0.35);
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(91,94,244,0.5);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-1);
+  padding: 12px 28px;
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(91,94,244,0.35);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--indigo-light);
+  padding: 10px 20px;
+  border: 1px solid rgba(91,94,244,0.3);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(91,94,244,0.1);
+  border-color: rgba(91,94,244,0.55);
+}
+
+.btn-full { width: 100%; border-radius: var(--r-md); }
+
+/* ── PILLS ──────────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  background: rgba(91,94,244,0.18);
+  color: var(--indigo-light);
+  border: 1px solid rgba(91,94,244,0.25);
+  padding: 4px 13px;
+  border-radius: var(--r-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.pill:hover { background: rgba(91,94,244,0.28); transform: translateY(-1px); }
+
+.pill-container { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ── RESULT CARDS ───────────────────────────────────────────── */
+.result-wrap {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeUp 0.4s var(--ease) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.score-banner {
+  background: var(--grad-brand);
+  border-radius: var(--r-lg);
+  padding: 32px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(91,94,244,0.4);
+}
+
+.score-banner::after {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+}
+
+.score-banner-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 6px;
+}
+
+.score-banner-value {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.score-banner-sub {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 8px;
+}
+
+/* Section panel inside results */
+.result-panel {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 22px 24px;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.result-panel:hover { border-color: rgba(91,94,244,0.25); }
+
+.result-panel-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Simple bullet list */
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bullet-list li {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.bullet-list li::before {
+  content: '›';
+  color: var(--indigo-light);
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: -1px;
+}
+
+.learn-link {
+  color: var(--cyan);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 6px;
+  transition: color var(--dur) var(--ease);
+  white-space: nowrap;
+}
+.learn-link:hover { color: var(--cyan-light); text-decoration: underline; }
+
+/* ── INTERVIEW BOXES ────────────────────────────────────────── */
+.interview-q-box {
+  background: rgba(91,94,244,0.07);
+  border: 1px solid rgba(91,94,244,0.2);
+  border-left: 3px solid var(--indigo);
+  border-radius: var(--r-md);
+  padding: 22px 24px;
+}
+
+.interview-a-box {
+  background: rgba(16,185,129,0.06);
+  border: 1px solid rgba(16,185,129,0.2);
+  border-left: 3px solid var(--emerald);
+  border-radius: var(--r-md);
+  padding: 22px 24px;
+  animation: fadeUp 0.3s var(--ease) both;
+}
+
+/* ── SPINNER ────────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  display: inline-block;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(91,94,244,0.35); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(91,94,244,0.6); }
+
+/* ── SIDEBAR LAYOUT ADJUSTMENTS ─────────────────────────── */
+
+/* Authenticated page wrappers need left breathing room */
+.ra-page,
+.sg-page,
+.dash {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+@media (max-width: 900px) {
+  .ra-page,
+  .sg-page,
+  .dash {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

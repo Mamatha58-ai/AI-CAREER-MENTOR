@@ -1,0 +1,218 @@
+/* ============================================================
+   SIDEBAR — AI Career Mentor
+   ============================================================ */
+
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(13,13,20,0.96);
+  border-right: 1px solid rgba(255,255,255,0.07);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 200;
+  padding: 0 0 24px 0;
+  overflow: hidden;
+}
+
+/* ── LOGO ─────────────────────────────────────────────────── */
+.sidebar-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.sidebar-logo-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #5b5ef4, #0ea5e9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(91,94,244,0.45);
+}
+
+.sidebar-logo-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #c7d2fe, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ── NAV ──────────────────────────────────────────────────── */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 12px;
+  overflow-y: auto;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #9499b0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  position: relative;
+  user-select: none;
+}
+
+.sidebar-link:hover {
+  background: rgba(255,255,255,0.05);
+  color: #eef0f6;
+}
+
+.sidebar-link-active {
+  background: rgba(91,94,244,0.15) !important;
+  color: #c7d2fe !important;
+}
+
+.sidebar-link-icon {
+  font-size: 1.05rem;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar-link-label { flex: 1; }
+
+.sidebar-link-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5b5ef4;
+  flex-shrink: 0;
+}
+
+/* ── PROFILE ──────────────────────────────────────────────── */
+.sidebar-profile {
+  padding: 16px 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b5ef4, #0ea5e9);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(91,94,244,0.35);
+  user-select: none;
+}
+
+.sidebar-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+}
+
+.sidebar-profile-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #eef0f6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-profile-email {
+  font-size: 0.72rem;
+  color: #565d78;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(244,63,94,0.08);
+  color: #fb7185;
+  border: 1px solid rgba(244,63,94,0.2);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.sidebar-logout:hover {
+  background: rgba(244,63,94,0.15);
+  border-color: rgba(244,63,94,0.38);
+  transform: translateY(-1px);
+}
+
+/* ── RESPONSIVE — collapse to icon-only on narrow screens ── */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 68px;
+    min-width: 68px;
+  }
+  .sidebar-logo-text,
+  .sidebar-link-label,
+  .sidebar-link-pip,
+  .sidebar-profile-info,
+  .sidebar-logout span:last-child {
+    display: none;
+  }
+  .sidebar-logo-wrap { padding: 20px 0; justify-content: center; }
+  .sidebar-logo-icon { margin: 0; }
+  .sidebar-link { justify-content: center; padding: 12px 0; }
+  .sidebar-link-icon { width: auto; }
+  .sidebar-profile { padding: 12px 8px 0; align-items: center; }
+  .sidebar-profile-card { justify-content: center; padding: 10px 8px; }
+  .sidebar-logout { padding: 10px 0; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .sidebar { display: none; }
+}

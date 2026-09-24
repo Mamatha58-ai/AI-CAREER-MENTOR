@@ -1,0 +1,198 @@
+/* ============================================================
+   REGISTER PAGE
+   ============================================================ */
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow blobs */
+.register-container::before,
+.register-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.register-container::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+}
+
+.register-container::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%);
+  bottom: -80px;
+  right: -80px;
+}
+
+/* Card */
+.register-card {
+  position: relative;
+  z-index: 1;
+  width: min(820px, 100%);
+  background: linear-gradient(145deg, rgba(99,102,241,0.1) 0%, rgba(6,182,212,0.05) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 48px 44px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.09);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 40px rgba(99,102,241,0.15);
+  animation: fadeSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.register-card h1 {
+  text-align: center;
+  font-size: clamp(1.7rem, 3vw, 2.1rem);
+  font-weight: 900;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #a5b4fc 60%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.register-card > p {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 34px;
+  font-size: 0.95rem;
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  padding: 13px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: #64748b;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: rgba(99,102,241,0.65);
+  background: rgba(99,102,241,0.09);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.18);
+}
+
+.input-group select option {
+  background: #1a1a2e;
+  color: #f1f5f9;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Two-column row */
+.row {
+  display: flex;
+  gap: 18px;
+}
+
+.row .input-group {
+  flex: 1;
+}
+
+/* Register button */
+.register-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 20px rgba(99,102,241,0.4);
+  margin-top: 8px;
+}
+
+.register-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(99,102,241,0.55);
+}
+
+.register-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Login redirect link */
+.register-card .login-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.register-card .login-link a {
+  color: #a5b4fc;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.register-card .login-link a:hover {
+  color: #67e8f9;
+  text-decoration: underline;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 600px) {
+  .register-card {
+    padding: 32px 22px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

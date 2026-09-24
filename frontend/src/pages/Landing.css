@@ -1,0 +1,458 @@
+/* ============================================================
+   LANDING PAGE
+   ============================================================ */
+
+.landing { min-height: 100vh; }
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.land-hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.land-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.land-orb-1 {
+  width: 580px; height: 580px;
+  background: radial-gradient(circle, rgba(91,94,244,0.18) 0%, transparent 70%);
+  top: -140px; left: 50%;
+  transform: translateX(-50%);
+  animation: landOrb 10s ease-in-out infinite alternate;
+}
+
+.land-orb-2 {
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+  bottom: 0; right: 8%;
+  animation: landOrb 13s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes landOrb {
+  from { transform: translateX(-50%) translateY(0); }
+  to   { transform: translateX(-50%) translateY(-32px); }
+}
+
+.land-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.land-badge {
+  display: inline-block;
+  background: rgba(91,94,244,0.14);
+  border: 1px solid rgba(91,94,244,0.32);
+  color: #a5b4fc;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+}
+
+.land-hero-inner h1 {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #eef0f6;
+  margin-bottom: 22px;
+}
+
+.land-hero-inner > p {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: #9499b0;
+  line-height: 1.78;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+
+.land-hero-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+/* Hero CTA buttons */
+.btn-hero-primary {
+  background: linear-gradient(135deg, #5b5ef4, #0ea5e9);
+  color: white;
+  padding: 15px 36px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 22px rgba(91,94,244,0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: inline-block;
+}
+.btn-hero-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(91,94,244,0.6);
+}
+
+.btn-hero-ghost {
+  background: rgba(255,255,255,0.06);
+  color: #eef0f6;
+  padding: 15px 36px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.13);
+  backdrop-filter: blur(8px);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  display: inline-block;
+}
+.btn-hero-ghost:hover {
+  background: rgba(91,94,244,0.12);
+  border-color: rgba(91,94,244,0.4);
+  transform: translateY(-3px);
+}
+
+.land-hero-note {
+  color: #565d78;
+  font-size: 0.82rem;
+}
+
+/* ── STATS STRIP ──────────────────────────────────────────── */
+.land-stats {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  flex-wrap: wrap;
+}
+
+.land-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 28px 52px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.land-stat:last-child { border-right: none; }
+
+.land-stat strong {
+  font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #c7d2fe, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.land-stat span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #565d78;
+}
+
+/* ── SECTIONS ─────────────────────────────────────────────── */
+.land-section {
+  padding: 96px 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.land-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #818cf8;
+  margin-bottom: 14px;
+}
+
+.land-section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: #eef0f6;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.land-section-sub {
+  color: #9499b0;
+  font-size: 1rem;
+  max-width: 540px;
+  margin: 0 auto 56px;
+  line-height: 1.7;
+}
+
+/* ── FEATURE CARDS ────────────────────────────────────────── */
+.land-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 940px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.land-feat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 34px 30px;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.land-feat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--fc, #5b5ef4);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.land-feat-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+}
+.land-feat-card:hover::before { opacity: 1; }
+
+.land-feat-icon {
+  font-size: 1.7rem;
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.land-feat-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #eef0f6;
+  margin-bottom: 10px;
+}
+
+.land-feat-card p {
+  color: #9499b0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ── HOW IT WORKS ─────────────────────────────────────────── */
+.land-how { background: rgba(255,255,255,0.015); border-radius: 32px; }
+
+.land-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 52px auto 0;
+  text-align: left;
+  position: relative;
+}
+
+.land-step {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 28px 22px;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.land-step:hover { transform: translateY(-5px); border-color: rgba(91,94,244,0.3); }
+
+.land-step-num {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #5b5ef4, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 14px;
+}
+
+.land-step-body h3 {
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: #eef0f6;
+  margin-bottom: 8px;
+}
+
+.land-step-body p { font-size: 0.85rem; color: #9499b0; line-height: 1.6; }
+
+/* ── TESTIMONIALS ─────────────────────────────────────────── */
+.land-testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 52px;
+  text-align: left;
+}
+
+.land-testi-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.land-testi-card:hover { border-color: rgba(91,94,244,0.25); transform: translateY(-4px); }
+
+.land-testi-quote {
+  color: #9499b0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  font-style: italic;
+  flex: 1;
+}
+
+.land-testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.land-testi-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b5ef4, #0ea5e9);
+  color: white;
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.land-testi-author strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #eef0f6;
+}
+
+.land-testi-author span {
+  display: block;
+  font-size: 0.78rem;
+  color: #565d78;
+  margin-top: 2px;
+}
+
+/* ── CTA BANNER ───────────────────────────────────────────── */
+.land-cta {
+  margin: 20px 48px 80px;
+  background: linear-gradient(135deg, rgba(91,94,244,0.16) 0%, rgba(14,165,233,0.1) 100%);
+  border: 1px solid rgba(91,94,244,0.22);
+  border-radius: 28px;
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.land-cta-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(91,94,244,0.2), transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.land-cta h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-weight: 900;
+  color: #eef0f6;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.land-cta p {
+  color: #9499b0;
+  font-size: 1rem;
+  margin-bottom: 34px;
+  position: relative;
+  z-index: 1;
+}
+
+.land-cta .btn-hero-primary {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.land-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 48px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #565d78;
+}
+
+.land-footer-brand {
+  font-weight: 800;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #c7d2fe, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 920px) {
+  .land-features-grid { grid-template-columns: 1fr; }
+  .land-steps          { grid-template-columns: repeat(2, 1fr); }
+  .land-testimonials   { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .land-section { padding: 64px 20px; }
+  .land-steps   { grid-template-columns: 1fr; }
+  .land-cta     { margin: 20px 20px 60px; padding: 52px 22px; }
+  .land-footer  { flex-direction: column; text-align: center; padding: 24px 20px; }
+  .land-stat    { padding: 20px 24px; }
+}

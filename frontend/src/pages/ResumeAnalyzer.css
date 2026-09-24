@@ -1,0 +1,299 @@
+/* ============================================================
+   RESUME ANALYZER PAGE
+   ============================================================ */
+
+.ra-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 52px 28px 80px;
+  min-height: calc(100vh - 64px);
+}
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.ra-header { margin-bottom: 32px; }
+
+.ra-header h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: #eef0f6;
+  margin-bottom: 7px;
+}
+
+.ra-header p { color: #9499b0; font-size: 0.93rem; line-height: 1.6; }
+
+/* ── DROP ZONE ───────────────────────────────────────────── */
+.ra-drop {
+  border: 2px dashed rgba(91,94,244,0.3);
+  border-radius: 18px;
+  padding: 48px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: rgba(91,94,244,0.04);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  text-align: center;
+  outline: none;
+}
+.ra-drop:hover,
+.ra-drop:focus    { border-color: rgba(91,94,244,0.6); background: rgba(91,94,244,0.08); }
+.ra-drop-active   { border-color: #5b5ef4 !important; background: rgba(91,94,244,0.12) !important; }
+.ra-drop-filled   { border-style: solid; border-color: rgba(16,185,129,0.45); background: rgba(16,185,129,0.05); }
+
+.ra-drop-icon     { font-size: 2.4rem; }
+.ra-drop-icon-ok  { filter: none; }
+
+.ra-drop-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #eef0f6;
+}
+
+.ra-drop-name {
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: #10b981;
+  word-break: break-all;
+}
+
+.ra-drop-hint {
+  font-size: 0.8rem;
+  color: #565d78;
+}
+
+/* ── ANALYZE BUTTON ──────────────────────────────────────── */
+.ra-analyze-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  background: linear-gradient(135deg, #5b5ef4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+  box-shadow: 0 5px 18px rgba(91,94,244,0.38);
+}
+.ra-analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(91,94,244,0.52);
+}
+.ra-analyze-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+@keyframes raSpin { to { transform: rotate(360deg); } }
+.ra-spin {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: raSpin 0.65s linear infinite;
+  display: inline-block;
+}
+
+/* ── RESULTS ─────────────────────────────────────────────── */
+.ra-results {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: raFadeUp 0.4s ease both;
+}
+
+@keyframes raFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Score card with ring */
+.ra-score-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ra-score-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--sc, #5b5ef4);
+}
+
+.ra-score-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9499b0;
+}
+
+.ra-score-ring {
+  position: relative;
+  width: 120px; height: 120px;
+  margin: 8px 0 4px;
+}
+
+.ra-ring-svg {
+  width: 100%; height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ra-ring-track {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 8;
+}
+
+.ra-ring-fill {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.ra-ring-value {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #eef0f6;
+  letter-spacing: -0.03em;
+}
+
+.ra-score-sub  { font-size: 0.82rem; color: #565d78; }
+
+.ra-score-verdict {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--sc, #5b5ef4);
+  margin-top: 4px;
+}
+
+/* Panels */
+.ra-panel {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 20px 22px;
+  transition: border-color 0.2s;
+}
+.ra-panel:hover { border-color: rgba(91,94,244,0.22); }
+
+.ra-panel-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #eef0f6;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Pills inside results */
+.ra-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.ra-pill {
+  background: rgba(91,94,244,0.16);
+  color: #818cf8;
+  border: 1px solid rgba(91,94,244,0.24);
+  padding: 4px 13px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+.ra-pill:hover { background: rgba(91,94,244,0.26); transform: translateY(-1px); }
+
+/* List items */
+.ra-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.ra-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.88rem;
+  color: #9499b0;
+  line-height: 1.55;
+}
+
+.ra-list li::before {
+  content: '›';
+  color: #818cf8;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: -1px;
+}
+
+.ra-learn-link {
+  color: #0ea5e9;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 6px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.ra-learn-link:hover { color: #7dd3fc; text-decoration: underline; }
+
+/* ── LOCKED DROP ZONE ────────────────────────────────────── */
+.ra-drop-locked {
+  cursor: not-allowed !important;
+  border-color: rgba(245,158,11,0.35) !important;
+  background: rgba(245,158,11,0.04) !important;
+  opacity: 0.85;
+}
+.ra-drop-locked:hover,
+.ra-drop-locked:focus {
+  border-color: rgba(245,158,11,0.45) !important;
+  background: rgba(245,158,11,0.06) !important;
+}
+
+/* ── DELETE BUTTON ───────────────────────────────────────── */
+.ra-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(244,63,94,0.08);
+  color: #fb7185;
+  border: 1px solid rgba(244,63,94,0.25);
+  border-radius: 12px;
+  font-size: 0.93rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.22s, border-color 0.22s, transform 0.22s;
+}
+.ra-delete-btn:hover:not(:disabled) {
+  background: rgba(244,63,94,0.15);
+  border-color: rgba(244,63,94,0.4);
+  transform: translateY(-1px);
+}
+.ra-delete-btn:disabled { opacity: 0.55; cursor: not-allowed; }
